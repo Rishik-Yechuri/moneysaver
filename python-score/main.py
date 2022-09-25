@@ -7,13 +7,25 @@ import json
 mockData = "mockTransaction.json"
 rawDataInvestment = json.load(open(mockData))
 
+# import requests
+# x = requests.get('http://localhost:8000/api/holdings')
+# print(x.json())
+
+iSjson = {"investment Score":inS.getinvestmentScore()}
+# iSjson = x.json()
 
 
 @app.get("/investmentScore")
 def test():
-    return {"investment Score":inS.getinvestmentScore()}
+    return iSjson
 
-# to run api, command is [ uvicorn main:app --reload ]
+
+@app.post("/getInvestmentScore")
+def test():
+    return iSjson
+
+# to run api, command is
+# [ uvicorn main:app --host 0.0.0.0 --port 8080 ]
 # need to connect the plaid
 @app.get("/factor1")
 def test():
