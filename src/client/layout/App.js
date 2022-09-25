@@ -1,6 +1,6 @@
 //import logo from './logo.svg';
 import './App.css';
-import Home from './pages/Home.js';
+import Landing from './pages/Landing.js';
 import {
   Routes,
   Route,
@@ -10,13 +10,13 @@ import { ToastContainer, toast } from 'react-toastify';
 import {useEffect, useState} from "react";
 import NavBar from "./shared/NavBar";
 function App() {
-  let navigate = useNavigate();
+    const navigate = useNavigate();
 
   useEffect(() => {
     let authToken = sessionStorage.getItem('Auth Token')
 
     if (!authToken) {
-      navigate('')
+      navigate('/landing')
     }
   }, [])
 
@@ -26,8 +26,8 @@ function App() {
       <NavBar/>
       <Routes>
         <Route
-          path=''
-          element={<Home/>}
+          path='/landing'
+          element={<Landing/>}
         />
       </Routes>
     </div>

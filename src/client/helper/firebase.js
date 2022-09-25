@@ -10,8 +10,6 @@ const STORAGE_BUCKET = process.env.REACT_APP_FIREBASE_STORAGE_BUCKET;
 const MESSAGING_SENDER_ID = process.env.REACT_APP_FIREBASE_MESSAGING_SENDER_ID;
 const APP_ID = process.env.REACT_APP_FIREBASE_APP_ID;
 
-console.log(API_KEY);
-
 const firebaseConfig = {
     apiKey: API_KEY,
     authDomain: AUTH_DOMAIN,
