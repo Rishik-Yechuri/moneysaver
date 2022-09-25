@@ -15,7 +15,7 @@ const bodyParser = require('body-parser');
 const moment = require('moment');
 const cors = require('cors');
 
-const APP_PORT = process.env.APP_PORT || 8000;
+const APP_PORT = process.env.APP_PORT || 5050;
 const PLAID_CLIENT_ID = process.env.REACT_APP_PLAID_CLIENT_ID;
 const PLAID_SECRET = process.env.REACT_APP_PLAID_SECRET;
 const PLAID_ENV = process.env.REACT_APP_PLAID_ENV || 'sandbox';
