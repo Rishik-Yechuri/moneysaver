@@ -4,6 +4,8 @@ import {UserContext} from "../App";
 import {authenticate, userIsLoggedIn} from "../../helper/auth";
 import {Button} from "@mui/material";
 import {addPlaidItem} from "../../helper/plaid";
+import {PlaidLink} from "react-plaid-link";
+import PlaidLinkButton from "./PlaidLinkButton";
 
 export default function AccountsOverview() {
     const [plaidItemModules, setPlaidItemModules] = useState([]);
@@ -24,15 +26,9 @@ export default function AccountsOverview() {
 
     return (
         <>
-            <h1>Here is a list of your accounts:</h1>
+            <h2>Manage your banking accounts:</h2>
 
-            <Button
-                variant="contained"
-                onClick={() => addPlaidItem()}
-            >
-                Add Account
-            </Button>
-
+            <PlaidLinkButton/>
             {plaidItemModules}
         </>
     );
