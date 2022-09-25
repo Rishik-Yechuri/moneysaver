@@ -1,7 +1,12 @@
 import * as React from 'react';
 import {Button, TextField} from "@mui/material";
+import {useState} from "react";
+import authenticate from "../../helper/auth";
 
-export default function LoginForm({ setUserID, setPassword, handleLogin }) {
+export default function LoginForm() {
+    const [userID, setUserID] = useState('');
+    const [password, setPassword] = useState('');
+
     return (
         <>
             <>
@@ -18,7 +23,12 @@ export default function LoginForm({ setUserID, setPassword, handleLogin }) {
                     onChange={(e) => setPassword(e.target.value)}
                 />
             </>
-            <Button variant="contained" onClick={handleLogin}>Log In / Sign Up</Button>
+            <Button
+                variant="contained"
+                onClick={() => authenticate(userID, password)}
+            >
+                Log In / Sign Up
+            </Button>
         </>
     );
 }
