@@ -1,23 +1,37 @@
-import logo from './logo.svg';
+//import logo from './logo.svg';
 import './App.css';
-
+import Home from './Home.js';
+import {
+  Routes,
+  Route,
+  useNavigate
+} from "react-router-dom";
+import { ToastContainer, toast } from 'react-toastify';
+import {useEffect, useState} from "react";
+import NavBar from "./Shared/NavBar";
 function App() {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  let navigate = useNavigate();
+
+  useEffect(() => {
+    let authToken = sessionStorage.getItem('Auth Token')
+
+    if (authToken) {
+      navigate('/app')
+    }
+  }, [])
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <ToastContainer />
+      <NavBar/>
+      <Routes>
+        <Route
+          path=''
+          element={<Home/>}
+        />
+      </Routes>
     </div>
   );
 }
