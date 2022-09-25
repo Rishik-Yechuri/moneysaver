@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import { useNavigate } from 'react-router-dom';
-import LoginForm from "./Shared/LoginForm";
-import NavBar from "./Shared/NavBar";
+import LoginForm from "./shared/LoginForm";
+import NavBar from "./shared/NavBar";
 
 export default function Home() {
     let navigate = useNavigate();

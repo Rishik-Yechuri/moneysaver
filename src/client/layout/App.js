@@ -8,7 +8,7 @@ import {
 } from "react-router-dom";
 import { ToastContainer, toast } from 'react-toastify';
 import {useEffect, useState} from "react";
-import NavBar from "./Shared/NavBar";
+import NavBar from "./shared/NavBar";
 function App() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
