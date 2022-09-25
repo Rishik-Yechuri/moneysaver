@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import LoginForm from "../shared/LoginForm";
+import LoginForm from "../components/LoginForm";
 
 export default function Landing() {
     return (

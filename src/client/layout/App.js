@@ -1,6 +1,7 @@
 //import logo from './logo.svg';
 import './App.css';
 import Landing from './pages/Landing.js';
+import Home from './pages/Home.js';
 import {
   Routes,
   Route,
@@ -8,7 +9,7 @@ import {
 } from "react-router-dom";
 import { ToastContainer, toast } from 'react-toastify';
 import {createContext, useEffect, useState} from "react";
-import NavBar from "./shared/NavBar";
+import NavBar from "./components/NavBar";
 import {userIsLoggedIn} from "../helper/auth";
 
 export const UserContext = createContext(null);
@@ -33,6 +34,10 @@ function App() {
                 <Route
                     path='/landing'
                     element={<Landing/>}
+                />
+                <Route
+                    path='/home'
+                    element={<Home/>}
                 />
             </Routes>
         </UserContext.Provider>
