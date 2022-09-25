@@ -1,11 +1,12 @@
 import * as React from 'react';
 import {Button, TextField} from "@mui/material";
 import {useContext, useState} from "react";
-import {authenticate, createAccount} from "../../helper/auth";
+import {authenticate, createAccount, userIsLoggedIn} from "../../helper/auth";
 import {useNavigate} from "react-router-dom";
 import {UserContext} from "../App";
 import {toast} from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
+import {getAuth, onAuthStateChanged} from "firebase/auth";
 
 export default function LoginForm() {
     const { user, setUser } = useContext(UserContext);
@@ -28,7 +29,7 @@ export default function LoginForm() {
             }
         } else {
             navigate('/home');
-            setUser(true);
+            setUser(userIsLoggedIn());
         }
     }
 
@@ -39,7 +40,7 @@ export default function LoginForm() {
             }
         } else {
             navigate('/home');
-            setUser(true);
+            setUser(userIsLoggedIn());
         }
     }
 

@@ -12,7 +12,7 @@ export default function NavBar() {
 
     const logoutFunc = () => {
         navigate('/landing');
-        setUser(false);
+        setUser(userIsLoggedIn());
     };
 
     return (

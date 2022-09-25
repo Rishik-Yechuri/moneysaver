@@ -11,11 +11,12 @@ import { ToastContainer, toast } from 'react-toastify';
 import {createContext, useEffect, useState} from "react";
 import NavBar from "./components/NavBar";
 import {userIsLoggedIn} from "../helper/auth";
+import {getAuth, onAuthStateChanged} from "firebase/auth";
 
 export const UserContext = createContext(null);
 
 function App() {
-    const [user, setUser] = useState(userIsLoggedIn());
+    const [user, setUser] = useState(userIsLoggedIn);
 
     const navigate = useNavigate();
 
