@@ -7,29 +7,35 @@ import {
   useNavigate
 } from "react-router-dom";
 import { ToastContainer, toast } from 'react-toastify';
-import {useEffect, useState} from "react";
+import {createContext, useEffect, useState} from "react";
 import NavBar from "./shared/NavBar";
+import {userIsLoggedIn} from "../helper/auth";
+
+export const UserContext = createContext(null);
+
 function App() {
+    const [user, setUser] = useState(userIsLoggedIn());
+
     const navigate = useNavigate();
 
   useEffect(() => {
-    let authToken = sessionStorage.getItem('Auth Token')
-
-    if (!authToken) {
+    if (!userIsLoggedIn()) {
       navigate('/landing')
     }
   }, [])
 
   return (
     <div className="App">
-      <ToastContainer />
-      <NavBar/>
-      <Routes>
-        <Route
-          path='/landing'
-          element={<Landing/>}
-        />
-      </Routes>
+        <UserContext.Provider value={{user, setUser}}>
+            <ToastContainer />
+            <NavBar/>
+            <Routes>
+                <Route
+                    path='/landing'
+                    element={<Landing/>}
+                />
+            </Routes>
+        </UserContext.Provider>
     </div>
   );
 }

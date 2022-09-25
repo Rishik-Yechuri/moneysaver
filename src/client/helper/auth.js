@@ -1,19 +1,36 @@
 import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword } from 'firebase/auth';
 import {auth} from "./firebase";
-
+import {useState} from "react";
+import {initializeUserData} from "./db";
 
 export const authenticate = (email, password, func) => {
     signInWithEmailAndPassword(auth, email, password)
         .then((response) => {
             sessionStorage.setItem('Auth Token', response._tokenResponse.refreshToken);
+            func();
         })
         .catch((error) => {
-            console.log(error.code)
+            func(error);
         });
-    func();
+}
+
+export const createAccount = (email, password, func) => {
+    createUserWithEmailAndPassword(auth, email, password)
+        .then((response) => {
+            sessionStorage.setItem('Auth Token', response._tokenResponse.refreshToken);
+            initializeUserData(response.user.uid);
+            func();
+        })
+        .catch((error) => {
+            func(error);
+        })
 }
 
 export const logout = (func) => {
     sessionStorage.removeItem('Auth Token');
     func();
+}
+
+export const userIsLoggedIn = () => {
+    return !!sessionStorage.getItem('Auth Token');
 }
